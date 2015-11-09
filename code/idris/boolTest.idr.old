@@ -1,0 +1,158 @@
+module boolTest
+
+import bool
+import pair
+
+b1: bool
+b1 = true
+
+b2: bool
+b2 = true
+
+b3: bool
+b3 = false
+
+b4: bool
+b4 = not true
+
+b5: bool
+b5 = not b1
+
+b6: bool
+b6 = not (not b5)
+||| expected return true
+andp1: bool
+andp1 = andp (mkPair true true)
+
+||| expected return false
+andp2: bool
+andp2 = andp (mkPair true false)
+
+||| expected return false
+andp3: bool
+andp3 = andp (mkPair false true)
+
+||| expected return false
+andp4: bool
+andp4 = andp (mkPair false false)
+
+||| expected return false
+orp1: bool
+orp1 = orp (mkPair false false)
+
+||| expected return true
+orp2: bool
+orp2 = orp (mkPair true false)
+
+||| expected return true
+orp3: bool
+orp3 = orp (mkPair false true)
+
+||| expected return true
+orp4: bool
+orp4 = orp (mkPair true true)
+
+||| expected return false
+nandp1: bool
+nandp1 = nandp (mkPair true true)
+
+||| expected return true
+nandp2: bool
+nandp2 = nandp (mkPair true false)
+
+||| expected return true
+nandp3: bool
+nandp3 = nandp (mkPair false true)
+
+||| expected return true
+nandp4: bool
+nandp4 = nandp (mkPair false false)
+
+||| expected return true
+xorp1: bool
+xorp1 = xorp (mkPair true false)
+
+||| expected return true
+xorp2: bool
+xorp2 = xorp (mkPair false true)
+
+||| expected return false
+xorp3: bool
+xorp3 = xorp (mkPair true true)
+
+||| expected return false
+xorp4: bool
+xorp4 = xorp (mkPair false false)
+
+--Exam Problem #5
+
+||| pand tests
+
+pand1: bool
+pand1 = pand true true
+--expect true
+
+pand2: bool
+pand2 = pand true false
+--expect false
+
+pand3: bool
+pand3 = pand false true
+--expect false
+
+pand4: bool
+pand4 = pand false false
+
+||| por tests
+
+por1: bool
+por1 = por true true
+--expect true
+
+por2: bool
+por2 = por true false
+--expect true
+
+por3: bool
+por3 = por false true
+--expect true
+
+por4: bool
+por4 = por false false
+--expect false
+
+||| pxor tests
+
+pxor1: bool
+pxor1 = pxor true true
+--expect false
+
+pxor2: bool
+pxor2 = pxor true false
+--expect true
+
+pxor3: bool
+pxor3 = pxor false true
+--expect true
+
+pxor4: bool
+pxor4 = pxor false false
+--expect false
+
+||| pnand tests
+
+pnand1: bool
+pnand1 = pnand true true
+--expect false
+
+pnand2: bool
+pnand2 = pnand true false
+--expect true
+
+pnand3: bool
+pnand3 = pnand false true
+--expect true
+
+pnand4: bool
+pnand4 = pnand false false
+--expect true

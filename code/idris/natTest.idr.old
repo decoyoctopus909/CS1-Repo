@@ -1,0 +1,213 @@
+module natTest
+
+import nat
+import bool
+import pair
+
+-- zero
+z: nat
+z = O
+
+-- one
+o: nat
+o = S O
+
+-- two
+t: nat
+t = S (S O)
+
+-- three
+r: nat
+r = S (S (S O))
+
+-- four
+f: nat
+f = S (S (S (S O)))
+
+-- five
+v: nat
+v = S (S (S (S (S O))))
+
+-- six
+s: nat
+s = S (S (S (S (S (S O)))))
+
+||| expected return true
+a: bool
+a = evenb O
+
+||| expected return false
+b: bool
+b = evenb (S O)
+
+||| expected return true
+c: bool
+c = evenb nat.t
+
+||| expected return false
+d: bool
+d = evenb nat.r
+
+||| expected return true
+e: bool
+e = evenb nat.f
+
+
+||| a test, expecting O
+h1: nat
+h1 = addp (mkPair O O)
+
+||| a test, expecting S (S O)
+h2: nat
+h2 = addp (mkPair O (S (S O)))
+
+||| a test, expecting (S O)
+h3: nat
+h3 = addp (mkPair (S O) O)
+
+||| a test, expecting (S (S (S (S (S O)))))
+h4: nat
+h4 = addp (mkPair (S (S O)) (S (S (S O))))
+
+||| a test, expecting 3
+m1: nat
+m1 = multp (mkPair (S O) (S (S (S O))))
+
+||| a test, expecting 6
+m2: nat
+m2 = multp (mkPair (S (S O)) (S (S (S O))))
+
+||| a test, expecting 9
+m3: nat
+m3 = multp (mkPair (S (S (S O ))) (S (S (S O))))
+
+
+||| expected return 6
+fct1: nat
+fct1 = factp (S (S (S O)))
+
+||| expected return 24
+fct2: nat
+fct2 = factp (S (S (S (S O))))
+
+
+||| expected return O
+exp1: nat
+exp1 = exp (mkPair O (nat.r))
+
+||| expected return 1
+exp2: nat
+exp2 = exp (mkPair (nat.r) O)
+
+|||expected return 4
+exp3: nat
+exp3 = exp (mkPair (nat.t) (nat.t))
+
+||| expected return 9
+exp4: nat
+exp4 = exp (mkPair (nat.r) (nat.t))
+
+
+||| expected return true
+lep1: bool
+lep1 = lep (mkPair O (nat.r))
+
+||| expected return false
+lep2: bool
+lep2 = lep (mkPair (S O) O)
+
+||| expected return false
+lep3: bool
+lep3 = lep (mkPair (nat.r) O)
+
+||| expected return true
+lep4: bool
+lep4 = lep (mkPair (nat.t) (nat.t))
+
+||| expected return false
+lep5: bool
+lep5 = lep (mkPair (nat.r) (S O))
+
+
+||| expected return true
+eqp1: bool
+eqp1 = eqp (mkPair O O)
+
+||| expected return false
+eqp2: bool
+eqp2 = eqp (mkPair (S O) O)
+
+||| expected return false
+eqp3: bool
+eqp3 = eqp (mkPair O (S (S O)))
+
+||| expected return true
+eqp4: bool
+eqp4 = eqp (mkPair (nat.r) (nat.r))
+
+||| expected return false
+eqp5: bool
+eqp5 = eqp (mkPair (nat.t) (nat.r))
+
+
+||| expected return true
+gtp1: bool
+gtp1 = gtp (mkPair (S O) O)
+
+||| expected return false
+gtp2: bool
+gtp2 = gtp (mkPair O (S O))
+
+||| expected return false
+gtp3: bool
+gtp3 = gtp (mkPair (nat.r) (nat.r))
+
+||| expected return false
+gtp4: bool
+gtp4 = gtp (mkPair (nat.t) (nat.r))
+
+||| expected return true
+gtp5: bool
+gtp5 = gtp (mkPair (nat.r) (nat.t))
+
+
+||| expected return true
+gep1: bool
+gep1 = gep (mkPair (S O) O)
+
+||| expected return true
+gep2: bool
+gep2 = gep (mkPair O O)
+
+||| expected return false
+gep3: bool
+gep3 = gep (mkPair O (nat.t))
+
+||| expected return false
+gep4: bool
+gep4 = gep (mkPair (nat.r) (nat.r))
+
+||| expected return true
+gep5: bool
+gep5 = gep (mkPair (nat.r) (nat.t))
+
+
+||| expected return true
+ltp1: bool
+ltp1 = ltp (mkPair O (S O))
+
+||| expected return false
+ltp2: bool
+ltp2 = ltp (mkPair O O)
+
+||| expected return false
+ltp3: bool
+ltp3 = ltp (mkPair (S O) O)
+
+||| expected return true
+ltp4: bool
+ltp4 = ltp (mkPair (nat.t) (nat.r))
+
+||| expected return false
+ltp5: bool
+ltp5 = ltp (mkPair (nat.r) (nat.t))

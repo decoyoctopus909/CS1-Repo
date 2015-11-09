@@ -1,0 +1,48 @@
+module list
+
+-- A polymorphic list abstrat data type
+-- Homework for 10/12: convert this module to list'
+
+import nat
+import option
+import bool
+
+-- The data type
+
+data list a = nil | cons a (list a)
+
+infixr 7 ::
+
+data list' a = nil' | (::) a (list' a)
+
+li: list' bool
+li = true :: false :: true :: true :: nil'
+
+-- The functions
+||| return length of list
+length': list' a -> nat
+length' nil' = O
+length' (n::l') = S (length' l')
+
+||| return length of list
+length: list a -> nat
+length nil = O
+length (cons n l') = S (length l')
+
+||| example #0: length of [O]
+lO: nat
+lO = length (cons O nil)
+
+||| example #1: length of [true]
+l1: nat
+l1 = length (cons true nil)
+
+||| example #2: length of []
+l2: nat
+l2 = length nil {a=nat}
+
+||| return the result of appending two lists
+append: list a -> list a -> list a
+append nil t = t
+append (cons h l1') l2 = cons h (append l1' l2)
+
